@@ -17,16 +17,25 @@ while True:
             print("You have decided to quit")
             break
 
-    num1 = tokens[1]
-    num2 = tokens[2]
+    num1 = int(tokens[1])
+    num2 = int(tokens[2])
+
     result = 0
 
+    operators = {"+": add(num1,num2), "-": subtract(num1,num2)}
     
-        
-    if operator == "+":
-        result = add(float(num1), float(num2))
-    elif operator == "-":
-        result = subtract(float(num1), float(num2))
+    for op, fun in operators:
+        print(op)
+        result = op(float(num1), float(num2))
+
+    # if operator == "+":
+    #     result = add(float(num1), float(num2))
+    # elif operator == "-":
+
+    #     result = subtract(float(num1), float(num2))
+
+    # elif operator == "-":
+    #     result = subtract(float(num1), float(num2))
     
     else:
         print("please provide two numbers") 
