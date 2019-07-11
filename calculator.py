@@ -14,20 +14,26 @@ while True:
     tokens = userinput.split(" ")
     operator = tokens[0]
     result = None
-    operators = {"+": add, "-": subtract, "*": multiply,"/": divide}
+    operators = {"+": add, "-": subtract, "*": multiply, "/": divide, "pow" : power, "mod" : mod, "square" : square, "cube" : cube}
 
     if userinput == "q":
             print("You have decided to quit")
             break
 
-    elif operator:
+    #ensure operator exists
+    elif list(operators.keys()).count(operator) > 0:
         num1 = float(tokens[1])
-        num2 = float(tokens[2])
+        num2 = float(tokens[2]) if len(tokens) == 3 else None
+        
+        if len(tokens) > 2:
+            result = operators[operator](num1, num2)
+        #handle case for square and cube 
+        else:
+            result = operators[operator](num1)
 
-        result = operators[operator](num1, num2) 
-
+        print(result)
         
     else:
-        print("please provide two numbers") 
+        print("please provide two numbers")
 
-    print(result)
+    
